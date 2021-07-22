@@ -7,7 +7,6 @@ public class PlayerClone : MonoBehaviour
 {
     public Slider gauge;
     private bool button;
-    private float cloneScale;
     public GameObject player;
     public GameObject cloneParent;
     Vector2 fwd;
@@ -21,18 +20,18 @@ public class PlayerClone : MonoBehaviour
         gauge.value = gameObject.transform.localScale.x - 0.2f;
         if (button && gameObject.transform.localScale.x > 0.2f)
         {
-            cloneScale += 1 * Time.deltaTime;
+            DataManager.Instance.cloneScale += 1 * Time.deltaTime;
             Clone();
         }
     }
     void Damage()
     {
-        float playerScale = cloneScale * 0.0005f;
+        float playerScale = DataManager.Instance.cloneScale * 0.0005f;
         gameObject.transform.localScale = new Vector3(transform.localScale.x - playerScale, transform.localScale.y - playerScale, transform.localScale.z - playerScale);
     }
     void Clone()
     {
-        cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.localScale = new Vector3(cloneScale, cloneScale, cloneScale);
+        cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.localScale = new Vector3(DataManager.Instance.cloneScale, DataManager.Instance.cloneScale, DataManager.Instance.cloneScale);
         cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.position += new Vector3((gameObject.transform.position.x+0.5f + Time.deltaTime)*Time.deltaTime, 1 * Time.deltaTime, 0);
         Damage();
     }
@@ -47,7 +46,7 @@ public class PlayerClone : MonoBehaviour
     }
     public void ButtonUp()
     {
-        cloneScale = 0;
+        DataManager.Instance.cloneScale = 0;
         button = false;
     }
 }
