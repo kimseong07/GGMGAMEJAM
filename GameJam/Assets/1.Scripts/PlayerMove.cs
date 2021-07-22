@@ -16,6 +16,12 @@ public class PlayerMove : MonoBehaviour
     bool isleft = false;
     bool isright = false;
     bool isjump = false;
+
+    RaycastHit2D hittted;
+    public bool grabb;
+    public float distance = 2f;
+    public Transform holdpoint;
+    public float throwpower;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -23,14 +29,45 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        RaycastHit2D hit =  Physics2D.Raycast(jumpPoint.transform.position, Vector2.down, 0.2f, WhatIsGround);
+        RaycastHit2D hit = Physics2D.Raycast(jumpPoint.transform.position, Vector2.down, 0.2f);
         if (hit)
         {
             isjump = true;
         }
-        else if(!hit)
+        else if (!hit)
         {
             isjump = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (!grabb)
+            {
+                Physics2D.queriesStartInColliders = false;
+
+                hittted = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+
+                if (hittted.collider != null)
+                {
+                    grabb = true;
+                }
+
+            }
+            else
+            {
+                grabb = false;
+
+                if (hittted.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    hittted.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwpower; ;
+                }
+
+                Debug.Log(transform.localScale.x);
+            }
+        }
+        if (grabb)
+        {
+            hittted.collider.gameObject.transform.position = holdpoint.position;
         }
     }
 
@@ -43,8 +80,8 @@ public class PlayerMove : MonoBehaviour
     {
         Vector3 moveVelo = Vector3.zero;
 
-        float y = transform.rotation.y;
-        
+        float x = transform.localScale.x;
+
         if (leanJoystick.ScaledValue.x < 0)
         {
             isright = false;
@@ -62,17 +99,17 @@ public class PlayerMove : MonoBehaviour
             isright = true;
         }
 
-        if(isright)
+        if (isright)
         {
-            y = 0;
+            x = 1;
         }
-        else if(isleft)
+        else if (isleft)
         {
-            y = 180;
+            x = -1;
         }
 
         transform.position += moveVelo * speed * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(0, y, 0);
+        transform.localScale = new Vector3(x,1,1);
     }
 
     public void Jump()
@@ -89,9 +126,22 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    public void Grab()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(jumpPoint.transform.position, Vector2.down * 0.2f);
+        /*
+        if (!grabb)
+        {
+            hittted = Physics2D.Raycast(transform.position, Vector2.right * transform.localPosition.x, distance);
+
+            if (hittted.collider != null)
+            {
+                grabb = true;
+            }
+            else
+            {
+
+            }
+        }
+        */
     }
 }
