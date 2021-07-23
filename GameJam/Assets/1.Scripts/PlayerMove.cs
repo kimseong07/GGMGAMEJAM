@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     public float distance = 2f;
     public Transform holdpoint;
     public float throwpower;
-    //vector2ÀÇ y°ª
+    //vector2ï¿½ï¿½ yï¿½ï¿½
     public float throwAngle = 1;
 
     void Start()
@@ -34,6 +34,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        
+        
         RaycastHit2D hit = Physics2D.Raycast(jumpPoint.transform.position, Vector2.down, 0.2f);
         if (hit)
         {
@@ -61,49 +63,14 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
-        Vector3 moveVelo = Vector3.zero;
-
-        float x = transform.localScale.x;
-
         if (leanJoystick.ScaledValue.x < 0)
         {
-            if (isright)
-            {
-                isright = false;
-
-                moveVelo = Vector3.left;
-
-                isleft = true;
-                x *= -1;
-            }
-            isright = false;
-
-            moveVelo = Vector3.left;
-
-            isleft = true;
+            rigid.AddForce(new Vector2(leanJoystick.ScaledValue.x * speed , 0));
         }
         else if (leanJoystick.ScaledValue.x > 0)
         {
-            if (isleft)
-            {
-                isleft = false;
-
-                moveVelo = Vector3.right;
-
-                isright = true;
-                x *= -1;
-            }
-            isleft = false;
-
-            moveVelo = Vector3.right;
-
-            isright = true;
+            rigid.AddForce(new Vector2(leanJoystick.ScaledValue.x * speed , 0));
         }
-
-
-
-        transform.position += moveVelo * speed * Time.deltaTime;
-        transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
     }
 
     void ThrowAng()
@@ -134,8 +101,11 @@ public class PlayerMove : MonoBehaviour
         {
             isjump = false;
 
-            rigid.velocity = new Vector2(rigid.velocity.x, 0);
-            rigid.velocity += Vector2.up * jump;
+            rigid.velocity = Vector2.zero;
+
+            Vector2 jumpVelo = new Vector2(0, jump);
+
+            rigid.AddForce(jumpVelo, ForceMode2D.Impulse);
         }
     }
 
@@ -165,12 +135,6 @@ public class PlayerMove : MonoBehaviour
             AngleBar.SetActive(false);
         }
 
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Vector2.down);
     }
 
 }

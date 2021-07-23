@@ -3210,7 +3210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428dbf1ee1e1b14d9f64400612a0c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 30
   jump: 50
   WhatIsGround:
     serializedVersion: 2
@@ -3261,7 +3261,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &6750371599686056152
 SpriteRenderer:
   m_ObjectHideFlags: 0

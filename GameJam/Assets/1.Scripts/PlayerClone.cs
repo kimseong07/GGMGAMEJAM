@@ -66,7 +66,7 @@ public class PlayerClone : MonoBehaviour
         x += 0.575f * Time.deltaTime;
         cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.localScale = new Vector3(cloneScale, cloneScale, cloneScale);
         cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.position = new Vector3(gameObject.transform.position.x + direction + x * direction, gameObject.transform.position.y + x - 0.5f, 0);
-        Damage();
+        //Damage();
     }
     public void DClone()
     {
