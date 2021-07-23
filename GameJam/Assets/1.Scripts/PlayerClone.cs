@@ -6,17 +6,26 @@ using UnityEngine.UI;
 public class PlayerClone : MonoBehaviour
 {
     public float itemHeal = 0.25f;
-    private Vector3 scaleSave;
     public Slider gauge;
     private float cloneScale;
     public GameObject clone;
     public GameObject cloneParent;
     float x;
     float direction;
+    float amount = 100;
+
+    private float coolTime = 1f;
+    private float curCool = 0f;
+
+
+    private void Start()
+    {
+        curCool = 0;
+    }
 
     void Update()
     {
-        gauge.value = gameObject.transform.localScale.y - 0.2f;
+        gauge.value = amount / 100;
         if (transform.localScale.x < 0)
         {
             direction = -1.5f;
@@ -25,15 +34,29 @@ public class PlayerClone : MonoBehaviour
         {
             direction = 1.5f;
         }
+
+        curCool -= Time.deltaTime;
     }
     public void ButtonDown()
     {
-        Instantiate(clone, cloneParent.transform);
-        cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.position = new Vector3(gameObject.transform.position.x + direction, gameObject.transform.position.y, gameObject.transform.position.z);
+        
+        if(amount > 0 && curCool <= 0)
+        {
+            amount -= 10;
+            Instantiate(clone, cloneParent.transform);
+            cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.position = new Vector3(gameObject.transform.position.x + direction, gameObject.transform.position.y, gameObject.transform.position.z);
 
-        x = 0;
+            x = 0;
+            Clone();
 
-        Clone();
+            curCool = coolTime;
+        }
+        else
+        {
+            
+        }
+        
+        
     }
     public void Damage()
     {
@@ -53,15 +76,6 @@ public class PlayerClone : MonoBehaviour
         //cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.localScale = new Vector3(cloneScale, cloneScale, cloneScale);
         cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.position = new Vector3(gameObject.transform.position.x + direction + x * direction, gameObject.transform.position.y + x - 0.5f, 0);
         //Damage();
-    }
-    public void DClone()
-    {
-        if (cloneParent.transform.childCount > 0 && cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.localScale.x > 2.5f)
-        {
-            Destroy(cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).gameObject);
-           
-            gameObject.transform.localScale = scaleSave;
-        }
     }
     /*
     private void OnTriggerEnter2D(Collider2D collision)
