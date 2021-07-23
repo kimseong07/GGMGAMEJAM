@@ -134,11 +134,8 @@ public class PlayerMove : MonoBehaviour
         {
             isjump = false;
 
-            rigid.velocity = Vector2.zero;
-
-            Vector2 jumpVelo = new Vector2(0, jump);
-
-            rigid.AddForce(jumpVelo, ForceMode2D.Impulse);
+            rigid.velocity = new Vector2(rigid.velocity.x, 0);
+            rigid.velocity += Vector2.up * jump;
         }
     }
 
@@ -168,6 +165,12 @@ public class PlayerMove : MonoBehaviour
             AngleBar.SetActive(false);
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, Vector2.down);
     }
 
 }
