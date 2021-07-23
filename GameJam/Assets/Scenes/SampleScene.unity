@@ -340,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226647181}
   m_LocalRotation: {x: -0, y: -0, z: -0.6966352, w: 0.71742564}
-  m_LocalPosition: {x: 0.17297086, y: -1.0485245, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1296409531}
@@ -810,6 +810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848710631}
   - component: {fileID: 848710632}
+  - component: {fileID: 848710633}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -847,6 +848,25 @@ MonoBehaviour:
   gauge: {fileID: 1750227476}
   clone: {fileID: 4568714499797436605, guid: 21a080827b8f2724aac75cdda96920d9, type: 3}
   cloneParent: {fileID: 726711568}
+--- !u!114 &848710633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848710630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df5963abcb2ab94b911376fb07ed446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleBar: {fileID: 226647181}
+  verticalJoy: {fileID: 1541032196}
+  grabb: 0
+  distance: 0.9
+  holdpoint: {fileID: 143899066}
+  throwpower: 0
+  throwAngle: 0
 --- !u!1 &979811426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,8 +1189,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6750371599625572471}
-        m_TargetAssemblyTypeName: PlayerMove, Assembly-CSharp
+      - m_Target: {fileID: 848710633}
+        m_TargetAssemblyTypeName: PlayerGrab, Assembly-CSharp
         m_MethodName: Grab
         m_Mode: 1
         m_Arguments:
@@ -2410,7 +2430,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2472,7 +2492,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2644,7 +2664,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2797,7 +2817,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2868,7 +2888,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -3021,7 +3041,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -3132,7 +3152,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -3310,15 +3330,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpPoint: {fileID: 79430370}
-  AngleBar: {fileID: 226647181}
   leanJoystick: {fileID: 2016805191}
-  verticalJoy: {fileID: 1541032196}
   isjump: 0
-  grabb: 0
-  distance: 0.9
-  holdpoint: {fileID: 143899066}
-  throwpower: 4
-  throwAngle: 0
   groundChkFront: {fileID: 79430371}
   groundChkBack: {fileID: 573855515}
   groundChkcenter: {fileID: 1570157334}
@@ -3350,7 +3363,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -3561,7 +3574,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 1.111
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

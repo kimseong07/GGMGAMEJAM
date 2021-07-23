@@ -11,23 +11,17 @@ public class PlayerMove : MonoBehaviour
     public float jump = 1f;
     public LayerMask WhatIsGround;
     public GameObject jumpPoint;
-    public GameObject AngleBar;
 
     Rigidbody2D rigid;
     public LeanJoystick leanJoystick;
-    public LeanJoystick verticalJoy;
 
     bool isleft = false;
     bool isright = false;
     public bool isjump = false;
 
-    RaycastHit2D hittted;
+
     BoxCollider2D box;
-    public bool grabb;
-    public float distance = 2f;
-    public Transform holdpoint;
-    public float throwpower;
-    public float throwAngle = 1;
+
 
     public Transform groundChkFront;  // 바닥 체크 position 
     public Transform groundChkBack;   // 바닥 체크 position 
@@ -65,19 +59,13 @@ public class PlayerMove : MonoBehaviour
 
         Jump();
 
-        if (grabb)
-        {
-            hittted.collider.gameObject.transform.position = holdpoint.position;
-            verticalJoy.gameObject.SetActive(true);
-            AngleBar.SetActive(true);
-        }
+
 
     }
 
     private void FixedUpdate()
     {
         Move();
-        ThrowAng();
     }
 
     void Move()
@@ -97,27 +85,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void ThrowAng()
-    {
-        if (verticalJoy.ScaledValue.y < 0)
-        {
-            throwAngle -= 0.02f;
-
-        }
-        else if (verticalJoy.ScaledValue.y > 0)
-        {
-            throwAngle += 0.02f;
-        }
-
-        if(throwAngle < 0)
-        {
-            throwAngle = 0;
-        }
-        else if(throwAngle > 2)
-        {
-            throwAngle = 2;
-        }
-    }
+    
 
     public void Jump()
     {
@@ -133,33 +101,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public void Grab()
-    {
-        if (!grabb)
-        {
-            Physics2D.queriesStartInColliders = false;
-
-            hittted = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
-
-            if (hittted.collider != null)
-            {
-                grabb = true;
-            }
-
-        }
-        else
-        {
-            grabb = false;
-
-            if (hittted.collider.gameObject.GetComponent<Rigidbody2D>() != null)
-            {
-                hittted.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, throwAngle) * throwpower; ;
-            }
-            verticalJoy.gameObject.SetActive(false);
-            AngleBar.SetActive(false);
-        }
-
-    }
+    
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
