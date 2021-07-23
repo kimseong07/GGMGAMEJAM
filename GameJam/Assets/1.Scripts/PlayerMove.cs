@@ -22,6 +22,7 @@ public class PlayerMove : MonoBehaviour
 
     BoxCollider2D box;
 
+    PlayerGrab grab;
 
     public Transform groundChkFront;  // 바닥 체크 position 
     public Transform groundChkBack;   // 바닥 체크 position 
@@ -33,6 +34,7 @@ public class PlayerMove : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
+        grab = FindObjectOfType<PlayerGrab>();
     }
 
     void Update()
@@ -76,12 +78,16 @@ public class PlayerMove : MonoBehaviour
 
 
             player.transform.localScale = new Vector3(-1, 1, 1);
+
+            grab.AngleBar.transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (leanJoystick.ScaledValue.x > 0)
         {
             rigid.AddForce(new Vector2(leanJoystick.ScaledValue.x * speed , 0));
 
             player.transform.localScale = new Vector3(1, 1, 1);
+
+            grab.AngleBar.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
