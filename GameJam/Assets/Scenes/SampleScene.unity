@@ -2110,7 +2110,6 @@ MonoBehaviour:
   holdpoint: {fileID: 143899066}
   throwpower: 6
   throwAngle: 0
-  BarAngle: 90
 --- !u!50 &2132874573
 Rigidbody2D:
   serializedVersion: 4

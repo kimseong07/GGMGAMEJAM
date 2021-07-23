@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
 
     bool isleft = false;
     bool isright = false;
-    bool isjump = false;
+    public bool isjump = false;
 
     RaycastHit2D hittted;
     public bool grabb;
@@ -111,10 +111,20 @@ public class PlayerMove : MonoBehaviour
         if (verticalJoy.ScaledValue.y < 0)
         {
             throwAngle -= 0.02f;
+
         }
         else if (verticalJoy.ScaledValue.y > 0)
         {
             throwAngle += 0.02f;
+        }
+
+        if(throwAngle < 0)
+        {
+            throwAngle = 0;
+        }
+        else if(throwAngle > 2)
+        {
+            throwAngle = 2;
         }
     }
 
@@ -156,8 +166,6 @@ public class PlayerMove : MonoBehaviour
             }
             verticalJoy.gameObject.SetActive(false);
             AngleBar.SetActive(false);
-
-            Debug.Log(transform.localScale.x);
         }
 
     }
