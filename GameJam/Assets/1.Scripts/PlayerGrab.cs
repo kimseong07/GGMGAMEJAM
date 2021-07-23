@@ -5,12 +5,13 @@ using Lean.Gui;
 
 public class PlayerGrab : MonoBehaviour
 {
-    public LeanJoystick verticalJoy;
-
     public bool grabb;
-    public float distance = 0.9f;
+
+    public bool cat = false;
 
     public float throwpower = 0;
+
+    public GameObject playerMg;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,48 +21,32 @@ public class PlayerGrab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (grabb)
-        {
-            verticalJoy.gameObject.SetActive(true);
-        }
+
     }
 
     private void FixedUpdate()
     {
-        ThrowAng();
-    }
-    void ThrowAng()
-    {
-        if (verticalJoy.ScaledValue.y < 0)
-        {
-            throwpower -= 0.5f;
-
-        }
-        else if (verticalJoy.ScaledValue.y > 0)
-        {
-            throwpower += 0.5f;
-        }
+        
     }
 
     public void Grab()
     {
-        if (!grabb)
-        {
-            grabb = true;
-        }
-        else
-        {
-            grabb = false;
-            verticalJoy.gameObject.SetActive(false);
-        }
 
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "able" && grabb == true)
+        if(collision.gameObject.tag == "able")
         {
             Debug.Log(collision.gameObject.tag);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 * throwpower, 0));
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "able")
+        {
+            cat = false;
         }
     }
 }
