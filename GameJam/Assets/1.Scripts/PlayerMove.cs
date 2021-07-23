@@ -60,9 +60,6 @@ public class PlayerMove : MonoBehaviour
         }
 
         Jump();
-
-
-
     }
 
     private void FixedUpdate()

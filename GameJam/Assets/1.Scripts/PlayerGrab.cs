@@ -35,6 +35,11 @@ public class PlayerGrab : MonoBehaviour
             AngleBar.SetActive(true);
         }
     }
+
+    private void FixedUpdate()
+    {
+        ThrowAng();
+    }
     void ThrowAng()
     {
         if (verticalJoy.ScaledValue.y < 0)
