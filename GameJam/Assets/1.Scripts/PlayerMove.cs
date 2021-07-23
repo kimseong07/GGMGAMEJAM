@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
 
     Rigidbody2D rigid;
     public LeanJoystick leanJoystick;
+    public LeanJoystick verticalJoy;
 
     bool isleft = false;
     bool isright = false;
@@ -22,6 +23,9 @@ public class PlayerMove : MonoBehaviour
     public float distance = 2f;
     public Transform holdpoint;
     public float throwpower;
+    //vector2ÀÇ y°ª
+    public float throwAngle = 1;
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -39,41 +43,18 @@ public class PlayerMove : MonoBehaviour
             isjump = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (!grabb)
-            {
-                Physics2D.queriesStartInColliders = false;
-
-                hittted = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
-
-                if (hittted.collider != null)
-                {
-                    grabb = true;
-                }
-
-            }
-            else
-            {
-                grabb = false;
-
-                if (hittted.collider.gameObject.GetComponent<Rigidbody2D>() != null)
-                {
-                    hittted.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwpower; ;
-                }
-
-                Debug.Log(transform.localScale.x);
-            }
-        }
         if (grabb)
         {
             hittted.collider.gameObject.transform.position = holdpoint.position;
+            leanJoystick.gameObject.SetActive(false);
+            verticalJoy.gameObject.SetActive(true);
         }
     }
 
     private void FixedUpdate()
     {
         Move();
+        ThrowAng();
     }
 
     void Move()
@@ -112,6 +93,18 @@ public class PlayerMove : MonoBehaviour
         transform.localScale = new Vector3(x,1,1);
     }
 
+    void ThrowAng()
+    {
+        if(verticalJoy.ScaledValue.y < 0)
+        {
+            throwAngle -= 0.02f;
+        }
+        else if(verticalJoy.ScaledValue.y > 0)
+        {
+            throwAngle += 0.02f;
+        }
+    }
+
     public void Jump()
     {
         if (isjump)
@@ -128,20 +121,30 @@ public class PlayerMove : MonoBehaviour
 
     public void Grab()
     {
-        /*
         if (!grabb)
         {
-            hittted = Physics2D.Raycast(transform.position, Vector2.right * transform.localPosition.x, distance);
+            Physics2D.queriesStartInColliders = false;
+
+            hittted = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
 
             if (hittted.collider != null)
             {
                 grabb = true;
             }
-            else
-            {
 
-            }
         }
-        */
+        else
+        {
+            grabb = false;
+
+            if (hittted.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+            {
+                hittted.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, throwAngle) * throwpower; ;
+            }
+            leanJoystick.gameObject.SetActive(true);
+            verticalJoy.gameObject.SetActive(false);
+
+            Debug.Log(transform.localScale.x);
+        }
     }
 }
