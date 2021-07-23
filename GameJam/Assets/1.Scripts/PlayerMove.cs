@@ -46,7 +46,6 @@ public class PlayerMove : MonoBehaviour
         if (grabb)
         {
             hittted.collider.gameObject.transform.position = holdpoint.position;
-            leanJoystick.gameObject.SetActive(false);
             verticalJoy.gameObject.SetActive(true);
         }
     }
@@ -141,7 +140,6 @@ public class PlayerMove : MonoBehaviour
             {
                 hittted.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, throwAngle) * throwpower; ;
             }
-            leanJoystick.gameObject.SetActive(true);
             verticalJoy.gameObject.SetActive(false);
 
             Debug.Log(transform.localScale.x);
