@@ -280,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79430370}
   m_LocalRotation: {x: -0, y: -0, z: -0.6966352, w: 0.71742564}
-  m_LocalPosition: {x: -0.8583478, y: 0.0016098022, z: 0}
+  m_LocalPosition: {x: -0.81, y: 0.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6750371599625572469}
@@ -345,7 +345,7 @@ Transform:
   m_Children:
   - {fileID: 1296409531}
   m_Father: {fileID: 6750371599625572469}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &309079993
 GameObject:
@@ -618,6 +618,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &573855514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 573855515}
+  m_Layer: 0
+  m_Name: JumpPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &573855515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573855514}
+  m_LocalRotation: {x: -0, y: -0, z: -0.6966352, w: 0.71742564}
+  m_LocalPosition: {x: -0.81, y: -0.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6750371599625572469}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &726711568
 GameObject:
@@ -1350,6 +1380,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c039d02e653dbb746abea71ba5c14eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1570157333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570157334}
+  m_Layer: 0
+  m_Name: JumpPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570157334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570157333}
+  m_LocalRotation: {x: -0, y: -0, z: -0.6966352, w: 0.71742564}
+  m_LocalPosition: {x: -0.81, y: -0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6750371599625572469}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1750227474
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,6 +3238,8 @@ Transform:
   m_Children:
   - {fileID: 143899066}
   - {fileID: 79430371}
+  - {fileID: 573855515}
+  - {fileID: 1570157334}
   - {fileID: 226647182}
   m_Father: {fileID: 6750371599686056153}
   m_RootOrder: 8
@@ -3214,7 +3276,7 @@ MonoBehaviour:
   jump: 50
   WhatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   jumpPoint: {fileID: 79430370}
   AngleBar: {fileID: 226647181}
   leanJoystick: {fileID: 2016805191}
@@ -3225,6 +3287,9 @@ MonoBehaviour:
   holdpoint: {fileID: 143899066}
   throwpower: 4
   throwAngle: 0
+  groundChkFront: {fileID: 79430371}
+  groundChkBack: {fileID: 573855515}
+  groundChkcenter: {fileID: 1570157334}
 --- !u!58 &6750371599625572474
 CircleCollider2D:
   m_ObjectHideFlags: 0

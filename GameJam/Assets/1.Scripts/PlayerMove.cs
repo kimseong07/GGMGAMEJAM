@@ -20,28 +20,41 @@ public class PlayerMove : MonoBehaviour
     public bool isjump = false;
 
     RaycastHit2D hittted;
+    BoxCollider2D box;
     public bool grabb;
     public float distance = 2f;
     public Transform holdpoint;
     public float throwpower;
-    //vector2�� y��
     public float throwAngle = 1;
+
+    public Transform groundChkFront;  // 바닥 체크 position 
+    public Transform groundChkBack;   // 바닥 체크 position 
+    public Transform groundChkcenter;
+
+    private bool isGround;
 
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        box = GetComponent<BoxCollider2D>();
     }
 
     void Update()
     {
-        
-        
-        RaycastHit2D hit = Physics2D.Raycast(jumpPoint.transform.position, Vector2.down, 0.2f);
-        if (hit)
+        bool ground_front = Physics2D.Raycast(groundChkFront.position, Vector2.down, 0.2f, WhatIsGround);
+        bool ground_back = Physics2D.Raycast(groundChkBack.position, Vector2.down, 0.2f, WhatIsGround);
+        bool ground_center = Physics2D.Raycast(groundChkcenter.position, Vector2.down, 0.2f, WhatIsGround);
+
+        if (ground_front || ground_back || groundChkcenter)
+            isGround = true;
+        else
+            isGround = false;
+
+        if (isGround)
         {
             isjump = true;
         }
-        else if (!hit)
+        else if (!isGround)
         {
             isjump = false;
         }
@@ -137,4 +150,10 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(groundChkFront.position, Vector2.down * 0.2f);
+        Gizmos.DrawRay(groundChkBack.position, Vector2.down * 0.2f);
+        Gizmos.DrawRay(groundChkcenter.position, Vector2.down * 0.2f);
+    }
 }
