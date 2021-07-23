@@ -17,17 +17,17 @@ public class PlayerClone : MonoBehaviour
 
     void Update()
     {
-        gauge.value = gameObject.transform.localScale.x - 0.2f;
-        if (button && gameObject.transform.localScale.x > 0.2f)
+        gauge.value = gameObject.transform.localScale.y - 0.2f;
+        if (button && gameObject.transform.localScale.y > 0.2f)
         {
             cloneScale += 1 * Time.deltaTime;
             Clone();
         }
-        if (transform.rotation.y < 0)
+        if (transform.localScale.x < 0)
         {
             direction = -1;
         }
-        else if (transform.rotation.y > -1)
+        else if (transform.localScale.x > 0)
         {
             direction = 1;
         }
@@ -35,7 +35,7 @@ public class PlayerClone : MonoBehaviour
     }
     public void ButtonDown()
     {
-        if (gameObject.transform.localScale.x > 0.2f)
+        if (gameObject.transform.localScale.y > 0.2f)
         {
             Instantiate(clone, cloneParent.transform);
             cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.position = new Vector3(gameObject.transform.position.x + direction, gameObject.transform.position.y, gameObject.transform.position.z);
@@ -52,7 +52,14 @@ public class PlayerClone : MonoBehaviour
     public void Damage()
     {
         float playerScale = cloneScale * 0.0005f;
-        gameObject.transform.localScale = new Vector3(transform.localScale.x - playerScale, transform.localScale.y - playerScale, transform.localScale.z - playerScale);
+        if (transform.localScale.x < 0)
+        {
+            gameObject.transform.localScale = new Vector3(transform.localScale.x + playerScale, transform.localScale.y - playerScale, transform.localScale.z - playerScale);
+        }
+        else if (transform.localScale.x > 0)
+        {
+            gameObject.transform.localScale = new Vector3(transform.localScale.x - playerScale, transform.localScale.y - playerScale, transform.localScale.z - playerScale);
+        }
     }
     public void Clone()
     {

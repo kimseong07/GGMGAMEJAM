@@ -1214,7 +1214,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2110,6 +2110,7 @@ MonoBehaviour:
   holdpoint: {fileID: 143899066}
   throwpower: 6
   throwAngle: 0
+  BarAngle: 90
 --- !u!50 &2132874573
 Rigidbody2D:
   serializedVersion: 4
@@ -2237,8 +2238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235772779817927449a207cf8c6c7408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemHeal: 0.25
   gauge: {fileID: 1750227476}
-  player: {fileID: 2847080053160390465, guid: 259ff5ae11ee9b64f83a6e631a4840c2, type: 3}
+  clone: {fileID: 2847080053160390465, guid: 259ff5ae11ee9b64f83a6e631a4840c2, type: 3}
   cloneParent: {fileID: 726711568}
 --- !u!114 &4819442408411713232
 MonoBehaviour:

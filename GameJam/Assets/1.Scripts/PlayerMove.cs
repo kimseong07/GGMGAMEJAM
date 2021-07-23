@@ -43,14 +43,14 @@ public class PlayerMove : MonoBehaviour
         {
             isjump = false;
         }
-        
+
         if (grabb)
         {
             hittted.collider.gameObject.transform.position = holdpoint.position;
             verticalJoy.gameObject.SetActive(true);
             AngleBar.SetActive(true);
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -67,6 +67,15 @@ public class PlayerMove : MonoBehaviour
 
         if (leanJoystick.ScaledValue.x < 0)
         {
+            if (isright)
+            {
+                isright = false;
+
+                moveVelo = Vector3.left;
+
+                isleft = true;
+                x *= -1;
+            }
             isright = false;
 
             moveVelo = Vector3.left;
@@ -75,6 +84,15 @@ public class PlayerMove : MonoBehaviour
         }
         else if (leanJoystick.ScaledValue.x > 0)
         {
+            if (isleft)
+            {
+                isleft = false;
+
+                moveVelo = Vector3.right;
+
+                isright = true;
+                x *= -1;
+            }
             isleft = false;
 
             moveVelo = Vector3.right;
@@ -82,26 +100,19 @@ public class PlayerMove : MonoBehaviour
             isright = true;
         }
 
-        if (isright)
-        {
-            x = 1;
-        }
-        else if (isleft)
-        {
-            x = -1;
-        }
+
 
         transform.position += moveVelo * speed * Time.deltaTime;
-        transform.localScale = new Vector3(x,1,1);
+        transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
     }
 
     void ThrowAng()
     {
-        if(verticalJoy.ScaledValue.y < 0)
+        if (verticalJoy.ScaledValue.y < 0)
         {
             throwAngle -= 0.02f;
         }
-        else if(verticalJoy.ScaledValue.y > 0)
+        else if (verticalJoy.ScaledValue.y > 0)
         {
             throwAngle += 0.02f;
         }
@@ -120,7 +131,7 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(jumpVelo, ForceMode2D.Impulse);
         }
     }
-    
+
     public void Grab()
     {
         if (!grabb)
@@ -148,7 +159,7 @@ public class PlayerMove : MonoBehaviour
 
             Debug.Log(transform.localScale.x);
         }
-    
+
     }
-    
+
 }
