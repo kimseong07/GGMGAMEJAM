@@ -20,16 +20,16 @@ public class PlayerClone : MonoBehaviour
         gauge.value = gameObject.transform.localScale.y - 0.2f;
         if (button && gameObject.transform.localScale.y > 0.2f)
         {
-            cloneScale += 1 * Time.deltaTime;
+            //cloneScale += 1 * Time.deltaTime;
             Clone();
         }
         if (transform.localScale.x < 0)
         {
-            direction = -1;
+            direction = -1.5f;
         }
         else if (transform.localScale.x > 0)
         {
-            direction = 1;
+            direction = 1.5f;
         }
         DClone();
     }
@@ -46,7 +46,7 @@ public class PlayerClone : MonoBehaviour
     }
     public void ButtonUp()
     {
-        cloneScale = 0;
+        cloneScale = 1;
         button = false;
     }
     public void Damage()
@@ -64,7 +64,7 @@ public class PlayerClone : MonoBehaviour
     public void Clone()
     {
         x += 0.575f * Time.deltaTime;
-        cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.localScale = new Vector3(cloneScale, cloneScale, cloneScale);
+        //cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.localScale = new Vector3(cloneScale, cloneScale, cloneScale);
         cloneParent.transform.GetChild(cloneParent.transform.childCount - 1).transform.position = new Vector3(gameObject.transform.position.x + direction + x * direction, gameObject.transform.position.y + x - 0.5f, 0);
         //Damage();
     }
@@ -77,7 +77,7 @@ public class PlayerClone : MonoBehaviour
             gameObject.transform.localScale = scaleSave;
         }
     }
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Item")
@@ -93,4 +93,5 @@ public class PlayerClone : MonoBehaviour
             }
         }
     }
+    */
 }

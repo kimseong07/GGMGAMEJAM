@@ -5,6 +5,8 @@ using Lean.Gui;
 
 public class PlayerMove : MonoBehaviour
 {
+    public GameObject player;
+
     public float speed = 1f;
     public float jump = 1f;
     public LayerMask WhatIsGround;
@@ -45,8 +47,10 @@ public class PlayerMove : MonoBehaviour
         bool ground_back = Physics2D.Raycast(groundChkBack.position, Vector2.down, 0.2f, WhatIsGround);
         bool ground_center = Physics2D.Raycast(groundChkcenter.position, Vector2.down, 0.2f, WhatIsGround);
 
-        if (ground_front || ground_back || groundChkcenter)
+        if (ground_front || ground_back || ground_center)
+        {
             isGround = true;
+        }
         else
             isGround = false;
 
@@ -58,6 +62,8 @@ public class PlayerMove : MonoBehaviour
         {
             isjump = false;
         }
+
+        Jump();
 
         if (grabb)
         {
@@ -79,10 +85,15 @@ public class PlayerMove : MonoBehaviour
         if (leanJoystick.ScaledValue.x < 0)
         {
             rigid.AddForce(new Vector2(leanJoystick.ScaledValue.x * speed , 0));
+
+
+            player.transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (leanJoystick.ScaledValue.x > 0)
         {
             rigid.AddForce(new Vector2(leanJoystick.ScaledValue.x * speed , 0));
+
+            player.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
