@@ -423,12 +423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df5963abcb2ab94b911376fb07ed446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalJoy: {fileID: 0}
-  grabb: 0
   cat: 0
-  distance: 0.9
-  throwpower: 0
-  playerMg: {fileID: 2546930953342134496}
+  throwpower: 50
+  box: {fileID: 6546058442316495433}
 --- !u!61 &6546058442316495433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -453,7 +450,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!1 &2546930953407778991
 GameObject:

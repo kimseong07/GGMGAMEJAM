@@ -75,7 +75,7 @@ public class PlayerMove : MonoBehaviour
 
             player.transform.localScale = new Vector3(-1, 1, 1);
 
-            grab.playerMg.transform.localScale = new Vector3(1,-1,1);
+            grab.box.offset = new Vector2(0,2);
         }
         else if (leanJoystick.ScaledValue.x > 0)
         {
@@ -83,7 +83,7 @@ public class PlayerMove : MonoBehaviour
 
             player.transform.localScale = new Vector3(1, 1, 1);
 
-            grab.playerMg.transform.localScale = new Vector3(1, 1, 1);
+            grab.box.offset = new Vector2(0, -2);
         }
     }
 

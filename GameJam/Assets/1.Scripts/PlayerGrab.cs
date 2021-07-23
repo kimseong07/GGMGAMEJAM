@@ -5,17 +5,17 @@ using Lean.Gui;
 
 public class PlayerGrab : MonoBehaviour
 {
-    public bool grabb;
-
     public bool cat = false;
 
     public float throwpower = 0;
 
-    public GameObject playerMg;
+    public BoxCollider2D box;
+
+    PlayerMove player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class PlayerGrab : MonoBehaviour
 
     public void Grab()
     {
-
+        cat = true;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -39,9 +39,15 @@ public class PlayerGrab : MonoBehaviour
         if(collision.gameObject.tag == "able")
         {
             Debug.Log(collision.gameObject.tag);
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(1 * throwpower, 0));
+
+            Vector2 force = new Vector2(player.leanJoystick.ScaledValue.x * throwpower, 0);
+            if (cat == true)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+            }
         }
     }
+    /*
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "able")
@@ -49,4 +55,5 @@ public class PlayerGrab : MonoBehaviour
             cat = false;
         }
     }
+    */
 }
