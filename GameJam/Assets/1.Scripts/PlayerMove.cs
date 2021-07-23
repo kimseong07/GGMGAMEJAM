@@ -73,18 +73,13 @@ public class PlayerMove : MonoBehaviour
         {
             rigid.AddForce(new Vector2(leanJoystick.ScaledValue.x * speed , 0));
 
-
             player.transform.localScale = new Vector3(-1, 1, 1);
-
-            grab.AngleBar.transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (leanJoystick.ScaledValue.x > 0)
         {
             rigid.AddForce(new Vector2(leanJoystick.ScaledValue.x * speed , 0));
 
             player.transform.localScale = new Vector3(1, 1, 1);
-
-            grab.AngleBar.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
