@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     public float jump = 1f;
     public LayerMask WhatIsGround;
     public GameObject jumpPoint;
+    public GameObject AngleBar;
 
     Rigidbody2D rigid;
     public LeanJoystick leanJoystick;
@@ -42,12 +43,14 @@ public class PlayerMove : MonoBehaviour
         {
             isjump = false;
         }
-
+        
         if (grabb)
         {
             hittted.collider.gameObject.transform.position = holdpoint.position;
             verticalJoy.gameObject.SetActive(true);
+            AngleBar.SetActive(true);
         }
+        
     }
 
     private void FixedUpdate()
@@ -117,7 +120,7 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(jumpVelo, ForceMode2D.Impulse);
         }
     }
-
+    
     public void Grab()
     {
         if (!grabb)
@@ -141,8 +144,11 @@ public class PlayerMove : MonoBehaviour
                 hittted.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, throwAngle) * throwpower; ;
             }
             verticalJoy.gameObject.SetActive(false);
+            AngleBar.SetActive(false);
 
             Debug.Log(transform.localScale.x);
         }
+    
     }
+    
 }
