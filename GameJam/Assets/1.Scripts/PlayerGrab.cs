@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Lean.Gui;
 
 public class PlayerGrab : MonoBehaviour
@@ -15,6 +16,7 @@ public class PlayerGrab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        box.enabled = false;
         player = FindObjectOfType<PlayerMove>();
     }
 
@@ -31,22 +33,25 @@ public class PlayerGrab : MonoBehaviour
 
     public void Grab()
     {
-        cat = true;
+        StartCoroutine(force());
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "able")
         {
-            Debug.Log(collision.gameObject.tag);
-
-            Vector2 force = new Vector2(player.leanJoystick.ScaledValue.x * throwpower, 0);
-            if (cat == true)
-            {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
-            }
+            Vector2 force = new Vector2(throwpower, 0);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force * -box.offset.y, ForceMode2D.Impulse);
         }
     }
+
+    IEnumerator force()
+    {
+        box.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        box.enabled = false;
+    }
+
     /*
     public void OnTriggerExit2D(Collider2D collision)
     {

@@ -1262,6 +1262,10 @@ PrefabInstance:
       propertyPath: distance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2546930953342134511, guid: 246739ea25ce018449b00a7ba54843d9, type: 3}
+      propertyPath: throwpower
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2546930954581106668, guid: 246739ea25ce018449b00a7ba54843d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0031564236
@@ -1437,6 +1441,14 @@ PrefabInstance:
     - target: {fileID: 9148683317224385867, guid: 246739ea25ce018449b00a7ba54843d9, type: 3}
       propertyPath: m_ConnectedAnchor.y
       value: 0.81066734
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148683317713689567, guid: 246739ea25ce018449b00a7ba54843d9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148683317772596083, guid: 246739ea25ce018449b00a7ba54843d9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9148683317870323796, guid: 246739ea25ce018449b00a7ba54843d9, type: 3}
       propertyPath: m_ConnectedAnchor.x
