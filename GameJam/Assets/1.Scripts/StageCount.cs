@@ -7,6 +7,8 @@ public class StageCount : MonoBehaviour
     public int stageNum;
     private int stageCount;
 
+    public GameObject winUI;
+    public GameObject gameStopButton;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,5 +21,12 @@ public class StageCount : MonoBehaviour
                 PlayerPrefs.SetInt("stageNum", stageCount);
             }
         }
+        Win();
+    }
+    private void Win()
+    {
+        Time.timeScale = 0;
+        winUI.gameObject.SetActive(true);
+        gameStopButton.SetActive(false);
     }
 }
