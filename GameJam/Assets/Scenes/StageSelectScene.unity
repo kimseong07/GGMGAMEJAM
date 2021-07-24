@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba0c54f14d5f0e4d84f458ccf6da74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Tutorial3
 --- !u!1 &627476616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1774631531459741896, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba0c54f14d5f0e4d84f458ccf6da74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Tutorial2
 --- !u!1 &1073556967
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,10 +543,14 @@ PrefabInstance:
     - target: {fileID: 316290697578195757, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1043101099}
+      objectReference: {fileID: 1043101100}
     - target: {fileID: 316290697578195757, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: SceneMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 316290697578195757, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneChange, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 547133741675667718, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -663,10 +667,14 @@ PrefabInstance:
     - target: {fileID: 5084703318785603104, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 509650816}
+      objectReference: {fileID: 509650817}
     - target: {fileID: 5084703318785603104, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: SceneMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 5084703318785603104, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneChange, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5711832323083084919, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -823,10 +831,10 @@ PrefabInstance:
     - target: {fileID: 7755810894558447032, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1424651103}
+      objectReference: {fileID: 1424651104}
     - target: {fileID: 7755810894558447032, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: SceneMove
       objectReference: {fileID: 0}
     - target: {fileID: 7755810894805234720, guid: 04c28cd9890b15740a0f471ca0a195e4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -955,7 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba0c54f14d5f0e4d84f458ccf6da74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Tutorial1
 --- !u!1 &1461736114
 GameObject:
   m_ObjectHideFlags: 0
