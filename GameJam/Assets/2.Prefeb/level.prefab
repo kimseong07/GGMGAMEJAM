@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cat: 0
-  throwpower: 50
+  throwpower: 1
   box: {fileID: 6546058442316495433}
 --- !u!61 &6546058442316495433
 BoxCollider2D:

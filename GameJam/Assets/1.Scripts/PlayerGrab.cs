@@ -40,7 +40,7 @@ public class PlayerGrab : MonoBehaviour
     {
         if(collision.gameObject.tag == "able")
         {
-            Vector2 force = new Vector2(throwpower, 0);
+            Vector2 force = new Vector2(throwpower, throwpower * 1.7f);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(force * -box.offset.y, ForceMode2D.Impulse);
         }
     }
