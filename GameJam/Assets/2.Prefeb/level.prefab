@@ -423,16 +423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df5963abcb2ab94b911376fb07ed446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   cat: 0
   throwpower: 50
   box: {fileID: 6546058442316495433}
-=======
-  grabb: 0
-  cat: 0
-  throwpower: 0
-  playerMg: {fileID: 2546930953342134496}
->>>>>>> jinwoo
 --- !u!61 &6546058442316495433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -655,8 +648,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -156, y: 131}
-  m_SizeDelta: {x: 241.7525, y: 250.5845}
+  m_AnchoredPosition: {x: -155, y: 131}
+  m_SizeDelta: {x: 280, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2546930953777081010
 CanvasRenderer:
@@ -964,8 +957,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -349, y: 131}
-  m_SizeDelta: {x: 250.5869, y: 250.59}
+  m_AnchoredPosition: {x: -415, y: 131}
+  m_SizeDelta: {x: 280, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2546930954269803214
 CanvasRenderer:
@@ -1097,7 +1090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 246, y: -29}
+  m_AnchoredPosition: {x: 308, y: -57}
   m_SizeDelta: {x: 117.7921, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2546930954319149330
@@ -1540,7 +1533,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1672,7 +1665,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1804,7 +1797,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1936,7 +1929,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2068,7 +2061,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2200,7 +2193,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2332,7 +2325,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2582,11 +2575,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.111
+  m_Mass: 6
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2621,7 +2614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2546930953342134496}
   speed: 30
-  jump: 50
+  jump: 60
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -2682,7 +2675,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f0b6dfa08b00efc48a2c206300035efa, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
